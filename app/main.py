@@ -1,9 +1,11 @@
 from fastapi import FastAPI
+import dotenv
+from app.routers.feelings_router import router
 
 app = FastAPI(
     title="Feelings Clasifier"
 )
 
-@app.router.get("/")
-def hello_world():
-    return "Hello world"
+dotenv.load_dotenv()
+
+app.include_router(router=router)
